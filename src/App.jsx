@@ -13,7 +13,7 @@ function App() {
   }
   
   const toString = (arr) => {
-    if (arr.length > 0) return arr.join(", ");
+    if (arr.length) return arr.join(", ");
     return "-";
   }
   
@@ -58,7 +58,7 @@ function App() {
                 </div>
                 <div>
                   <span className="text-sm text-gray-400">Author</span>
-                  <h5 className="line-clamp-3 text-ellipsis text-xs">{ toString(book?.volumeInfo?.authors) }</h5>
+                  <h5 className="line-clamp-3 text-ellipsis text-xs">{ toString(book?.volumeInfo?.authors ?? "") }</h5>
                 </div>
               </div>
               <button 
