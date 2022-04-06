@@ -57,7 +57,7 @@ function App() {
                   <h3 className="font-semibold line-clamp-3 text-ellipsis">{ book.volumeInfo.title }</h3>
                 </div>
                 <div>
-                  <span className="text-sm text-gray-400">Author</span>
+                  <span className="text-sm text-gray-400">Authsor</span>
                   <h5 className="line-clamp-3 text-ellipsis text-xs">{ toString(book?.volumeInfo?.authors ?? "") }</h5>
                 </div>
               </div>
