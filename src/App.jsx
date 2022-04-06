@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <nav className="max-w-3xl mx-auto my-2 flex justify-end">
-        <a href="#" className="font-semibold text-gray-500 text-sm hover:text-blue-500">Favorites</a>
+        <a href="/#" className="font-semibold text-gray-500 text-sm hover:text-blue-500">Favorites</a>
       </nav>
       
       <main className="max-w-3xl mx-auto my-5">
