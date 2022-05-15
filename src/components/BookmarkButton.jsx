@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { FaBookmark } from "react-icons/fa";
 import { decrement, increment } from '../redux/bookmarkSlice'
 
 function BookmarkButton({ book }) {
     const dispatch = useDispatch();
-    const [isFavorited, setIsFavorited] = useState(book.isFavorited ? true : false);
+    const isFavorited = useState(book.isFavorited ? true : false);
 
     const handleBookmark = (book) => {
         if(isFavorited) {
