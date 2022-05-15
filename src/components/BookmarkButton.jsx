@@ -5,7 +5,8 @@ import { decrement, increment } from '../redux/bookmarkSlice'
 
 function BookmarkButton({ book }) {
     const dispatch = useDispatch();
-    const isFavorited = useState(book.isFavorited ? true : false);
+    // eslint-disable-next-line no-unused-vars
+    const [isFavorited, setIsFavorited] = useState(book.isFavorited ? true : false);
 
     const handleBookmark = (book) => {
         if(isFavorited) {
