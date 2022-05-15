@@ -1,24 +1,19 @@
 import { useEffect, useState } from "react";
-import { FiSearch, FiBookmark, FiBook, FiArrowRightCircle } from "react-icons/fi";
+import { FiSearch, FiBook, FiArrowRightCircle } from "react-icons/fi";
 import { FaHeart } from "react-icons/fa";
 import logo from "./logo.png";
+import FavoritesMenu from "./components/FavoritesMenu";
+import BookItem from "./components/BookItem";
+import { useSelector } from 'react-redux'
 
 function App() {
+  const bookmarkId = useSelector((state) => state.bookmark.id);
+  const bookmark = useSelector((state) => state.bookmark.value);
   const [search, setSearch] = useState("");
   const [books, setBooks] = useState([]);
-  const [favorites, setFavorites] = useState({});
   
   const handleSearch = (e) => {
     setSearch(e.target.value);
-  }
-  
-  const toString = (arr) => {
-    if (arr.length) return arr.join(", ");
-    return "-";
-  }
-  
-  const handleBookmark = (book) => {
-    setFavorites({ ...favorites, [book.id]: 1 } );
   }
   
   useEffect(() => {
@@ -34,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <nav className="max-w-3xl mx-auto my-2 flex justify-end">
-        <a href="/#" className="font-semibold text-gray-500 text-sm hover:text-blue-500">Favorites</a>
+        <FavoritesMenu/>
       </nav>
       
       <main className="max-w-3xl mx-auto my-5">
@@ -48,26 +43,19 @@ function App() {
           placeholder="Search Book..."/>
         </div>
         
-        <div className="my-10 grid grid-cols-3 gap-4 ">
-          {books.items && books?.items.map(book => (
-            <div className="relative border-gray-300 border p-2 rounded-lg shadow-sm items-center" key={book.id}>
-              <img src={book?.volumeInfo?.imageLinks?.thumbnail} alt="thumbnail" className="rounded-md mx-auto mb-2 object-cover h-[180px] w-[128px]"/>
-              <div className="flex flex-col gap-2">
-                <div>
-                  <h3 className="font-semibold line-clamp-3 text-ellipsis">{ book.volumeInfo.title }</h3>
-                </div>
-                <div>
-                  <span className="text-sm text-gray-400">Author</span>
-                  <h5 className="line-clamp-3 text-ellipsis text-xs">{ toString(book?.volumeInfo?.authors ?? "") }</h5>
-                </div>
-              </div>
-              <button 
-                onClick={() => handleBookmark(book)}
-                className={"absolute top-2 right-2  rounded-lg p-2 hover:bg-purple-100 hover:text-purple-600 transition duration-300 ease-in-out" + (favorites[book.id] ? " bg-purple-600 text-white" : "bg-gray-50 text-gray-500" )}>
-                <FiBookmark/>
-              </button>
-            </div>
+        <div className="my-10 grid grid-cols-3 gap-4">
+          {books.items && books?.items.map((book, index) => (
+            <BookItem book={book} key={index}/>
           ))}
+        </div>
+
+        <h5>Favorites</h5>
+        <div>
+          <div className="my-10 grid grid-cols-3 gap-4">
+            {bookmark&& bookmark.map((book, index) => (
+              <BookItem book={book} key={'fav-' + index} favorited/>
+            ))}
+          </div>
         </div>
         
         <div className="mb-3 flex justify-between">
@@ -83,6 +71,8 @@ function App() {
         </div>
         
         <hr />
+
+        
       </main>
       <footer className="flex justify-center my-10">
         <div className="text-sm text-gray-500 inline-flex items-center gap-2">
