@@ -7,7 +7,6 @@ import BookItem from "./components/BookItem";
 import { useSelector } from 'react-redux'
 
 function App() {
-  const bookmarkId = useSelector((state) => state.bookmark.id);
   const bookmark = useSelector((state) => state.bookmark.value);
   const [search, setSearch] = useState("");
   const [books, setBooks] = useState([]);
