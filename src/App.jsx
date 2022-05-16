@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import ButtonNext from "./components/ButtonNext";
 import BookGrid from "./components/BookGrid";
 import GoogleBookLogo from "./components/GoogleBookLogo";
+import Carousel from "./components/Carousel";
 
 function App() {
   const bookmark = useSelector((state) => state.bookmark.value);
@@ -27,22 +28,22 @@ function App() {
   return (
     <div className="App">
       <NavigationMenu/>
-
       <main className="max-w-3xl mx-auto my-5">
         <GoogleBookLogo/>
         <Search/>
         
-        <Section title="Books" icon={<FiBook/>} count={books.totalItems}>
-          <BookGrid books={books?.items}/>
+        <Section title="Books" icon={<FiBook/>} count={books.totalItems} isPage url="#">
+          {/* <BookGrid books={books?.items}/> */}
+          <Carousel books={books?.items}/>
         </Section>
 
-        <Section title="Favorites" icon={<FiBookmark/>} count={bookmark.length}>
+        <Section title="Favorites" icon={<FiBookmark/>} count={bookmark.length} isPage>
           <BookGrid books={bookmark}/>
         </Section>
         
-        <div className="mb-3 flex justify-center">
+        {/* <div className="mb-3 flex justify-center">
           <ButtonNext/>
-        </div>
+        </div> */}
       </main>
 
       <Footer/>
