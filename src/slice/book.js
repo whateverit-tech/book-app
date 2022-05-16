@@ -38,6 +38,7 @@ const bookSlice = createSlice({
         });
       }
     },
+
     removeFavorite: (state, action) => {
       if(state.favoriteId.includes(action.payload.id)) {
         state.favoriteList = state.favoriteList.filter(item => item.id !== action.payload.id);
@@ -53,7 +54,7 @@ const bookSlice = createSlice({
           return {...item}
         });
       }
-    }
+    },
   },
   extraReducers: {
     [getBooks.pending]: (state, action) => {

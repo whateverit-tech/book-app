@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiSearch } from "react-icons/fi";
+import { useDispatch, useSelector } from 'react-redux';
+import _ from 'lodash';
 
 function Search() {
-  const search = "";
-  const handleSearch = () => {
+  const books = useSelector(state => state.book.value);
+  
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    console.log(_.filter(books.items, { volumeInfo: { title: search } }));
   }
 
   return (

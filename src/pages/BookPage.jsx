@@ -1,21 +1,13 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { FiBook, FiBookmark } from 'react-icons/fi'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { FiBook } from 'react-icons/fi'
 import BookGrid from '../components/BookGrid'
-import Carousel from '../components/Carousel'
 import GoogleBookLogo from '../components/GoogleBookLogo'
 import Search from '../components/Search'
 import Section from '../components/Section'
 
-import { getBooks } from "../slice/book";
 
 function BookPage() {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getBooks());
-    }, [dispatch]);
-
     const books = useSelector((state) => state.book.value);
 
     return (
