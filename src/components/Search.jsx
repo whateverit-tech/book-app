@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FiSearch } from "react-icons/fi";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import _ from 'lodash';
 
 function Search() {
