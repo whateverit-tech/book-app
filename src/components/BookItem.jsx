@@ -2,6 +2,7 @@ import BookmarkButton from './BookmarkButton';
 
 function BookItem({ book }) {
 
+
     const toString = (arr) => {
         if (arr.length) return arr.join(", ");
         return "-";
