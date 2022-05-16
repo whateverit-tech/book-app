@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import FancyTitle from '../components/FancyTitle';
 // import { useGetPokemonByNameQuery } from '../services/Pokemon';
-import pokemon, { getPokemons } from '../slice/pokemon';
+import { getPokemons } from '../slice/pokemon';
 
 function PokemonPage() {
   const dispatch = useDispatch();

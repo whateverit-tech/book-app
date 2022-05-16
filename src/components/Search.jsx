@@ -5,8 +5,7 @@ import _ from 'lodash';
 
 function Search() {
   const books = useSelector(state => state.book.value);
-  
-  const dispatch = useDispatch();
+
   const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
