@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetPokemonByNameQuery } from './services/pokemon';
+import { useGetPokemonByNameQuery } from '../services/Pokemon';
 
 function PokemonPage() {
   const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur');
