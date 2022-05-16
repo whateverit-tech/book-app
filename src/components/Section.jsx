@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Section({ title, icon, count, isPage, url, children }) {
   return (
@@ -6,12 +7,15 @@ function Section({ title, icon, count, isPage, url, children }) {
             <div className="flex justify-between mb-6 items-center">
                 <h5 className="flex gap-2 items-center">
                     <span className="text-gray-400 inline-flex gap-1 items-center">{ icon }{ title }</span>
-                    <span className="font-semibold text-blue-500">{ count }</span>
+
+                    {count && (
+                        <span className="font-semibold text-blue-500">{ count }</span>
+                    )}
                 </h5>
                 {isPage &&  url && (
-                    <button className="px-4 py-1 rounded-md bg-purple-400 text-sm text-white">
+                    <Link to={url} className="px-4 py-1 rounded-md bg-purple-400 text-sm text-white">
                         More
-                    </button>
+                    </Link>
                 )}
             </div>
 

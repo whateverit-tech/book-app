@@ -1,21 +1,18 @@
 import { useEffect } from "react";
-import { FiBook, FiBookmark } from "react-icons/fi";
-import { useSelector, useDispatch } from 'react-redux'
-import NavigationMenu from "./components/NavigationMenu";
-import Section from "./components/Section";
-import Search from "./components/Search";
 import Footer from "./components/Footer";
-import BookGrid from "./components/BookGrid";
-import GoogleBookLogo from "./components/GoogleBookLogo";
-import Carousel from "./components/Carousel";
+import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import Homepage from "./pages/Homepage";
+import BookPage from "./pages/BookPage";
+import PokemonPage from "./pages/PokemonPage";
+import FavoritePage from "./pages/FavoritePage";
 import { getBooks } from "./slice/book";
 
+import Navbar from "./components/Navbar";
 
 function App() {
   const dispatch = useDispatch();
-
-  const books = useSelector((state) => state.book.value);
-  const {favoriteId, favoriteList} = useSelector((state) => state.book);
 
   useEffect(() => {
     dispatch(getBooks());
@@ -23,19 +20,15 @@ function App() {
 
   return (
     <div className="App">
-      <NavigationMenu/>
+      <Navbar/>
 
       <main className="max-w-3xl mx-auto my-5">
-        <GoogleBookLogo/>
-        <Search/>
-        
-        <Section title="Books" icon={<FiBook/>} count={books.totalItems} isPage url="#">
-          <Carousel books={books?.items}/>
-        </Section>
-
-        <Section title="Favorites" icon={<FiBookmark/>} count={favoriteId.length} isPage>
-          <BookGrid books={favoriteList}/>
-        </Section>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="pokemons" element={<PokemonPage />} />
+          <Route path="books" element={<BookPage />} />
+          <Route path="favorites" element={<FavoritePage />} />
+        </Routes>
       </main>
 
       <Footer/>
