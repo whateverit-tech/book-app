@@ -17,7 +17,6 @@ function BookPage() {
     }, [dispatch]);
 
     const books = useSelector((state) => state.book.value);
-    const {favoriteId, favoriteList} = useSelector((state) => state.book);
 
     return (
         <>
@@ -25,12 +24,8 @@ function BookPage() {
                 <GoogleBookLogo/>
                 <Search/>
                 
-                <Section title="Books" icon={<FiBook/>} count={books.totalItems} isPage url="#">
-                <Carousel books={books?.items}/>
-                </Section>
-
-                <Section title="Favorites" icon={<FiBookmark/>} count={favoriteId.length} isPage>
-                <BookGrid books={favoriteList}/>
+                <Section title="Books" icon={<FiBook/>} count={books.totalItems}>
+                <BookGrid books={books?.items}/>
                 </Section>
             </main>
         </>

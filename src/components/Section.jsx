@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Section({ title, icon, count, isPage, url, children }) {
   return (
@@ -9,9 +10,9 @@ function Section({ title, icon, count, isPage, url, children }) {
                     <span className="font-semibold text-blue-500">{ count }</span>
                 </h5>
                 {isPage &&  url && (
-                    <button className="px-4 py-1 rounded-md bg-purple-400 text-sm text-white">
+                    <Link to={url} className="px-4 py-1 rounded-md bg-purple-400 text-sm text-white">
                         More
-                    </button>
+                    </Link>
                 )}
             </div>
 
