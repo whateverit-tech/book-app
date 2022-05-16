@@ -1,49 +1,41 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FiBook, FiBookmark } from "react-icons/fi";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import NavigationMenu from "./components/NavigationMenu";
 import Section from "./components/Section";
 import Search from "./components/Search";
 import Footer from "./components/Footer";
-import ButtonNext from "./components/ButtonNext";
 import BookGrid from "./components/BookGrid";
 import GoogleBookLogo from "./components/GoogleBookLogo";
 import Carousel from "./components/Carousel";
+import { getBooks } from "./slice/book";
+
 
 function App() {
-  const bookmark = useSelector((state) => state.bookmark.value);
-  const [search, setSearch] = useState("");
-  const [books, setBooks] = useState([]);
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch(`https://www.googleapis.com/books/v1/volumes?q='${search}'`);
-      const json = await data.json();
-      setBooks(json);
-    }
+  const dispatch = useDispatch();
 
-    fetchData().catch(console.error);
-  },[search]);
+  const books = useSelector((state) => state.book.value);
+  const {favoriteId, favoriteList} = useSelector((state) => state.book);
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
 
   return (
     <div className="App">
       <NavigationMenu/>
+
       <main className="max-w-3xl mx-auto my-5">
         <GoogleBookLogo/>
         <Search/>
         
         <Section title="Books" icon={<FiBook/>} count={books.totalItems} isPage url="#">
-          {/* <BookGrid books={books?.items}/> */}
           <Carousel books={books?.items}/>
         </Section>
 
-        <Section title="Favorites" icon={<FiBookmark/>} count={bookmark.length} isPage>
-          <BookGrid books={bookmark}/>
+        <Section title="Favorites" icon={<FiBookmark/>} count={favoriteId.length} isPage>
+          <BookGrid books={favoriteList}/>
         </Section>
-        
-        {/* <div className="mb-3 flex justify-center">
-          <ButtonNext/>
-        </div> */}
       </main>
 
       <Footer/>
