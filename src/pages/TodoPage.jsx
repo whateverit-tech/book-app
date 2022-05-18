@@ -10,7 +10,6 @@ import {
 import {db} from '../firebase';
 import FancyTitle from '../components/FancyTitle';
 import TodoItem from '../components/TodoItem';
-import { set } from 'lodash';
 
 function TodoPage() {
     const [tasks, setTasks] = useState([]);
