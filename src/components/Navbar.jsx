@@ -8,6 +8,7 @@ function Navbar() {
         <LinkItem to="pokemons" menu="Pokemon"/>
         <LinkItem to="books" menu="Book"/>
         <LinkItem to="favorites" menu="Favorite"/>
+        <LinkItem to="todo" menu="Todo"/>
     </nav>
   )
 }

@@ -10,6 +10,7 @@ import FavoritePage from "./pages/FavoritePage";
 import { getBooks } from "./slice/book";
 
 import Navbar from "./components/Navbar";
+import TodoPage from "./pages/TodoPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
           <Route path="pokemons" element={<PokemonPage />} />
           <Route path="books" element={<BookPage />} />
           <Route path="favorites" element={<FavoritePage />} />
+          <Route path="todo" element={<TodoPage />} />
         </Routes>
       </main>
 
