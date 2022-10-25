@@ -1,5 +1,6 @@
 # React Demo
-Book App
+Name: Book App
+Publish: ...
 
 Feature:
 - [x] Fetch Book
